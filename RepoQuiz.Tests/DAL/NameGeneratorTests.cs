@@ -12,26 +12,25 @@ namespace RepoQuiz.Tests.DAL
     [TestClass]
     public class NameGeneratorTests
     {
-        Mock<StudentContext> myContext { get; set; }
-        List<Student> StudentList = new List<Student>();
 
-        StudentRepository repo { get; set; }
-        NameGenerator fortest { get; set; }
+        NameGenerator fortest = new NameGenerator();  
 
-
-
-
-        [TestInitialize]
-        public void Initialize()
+        [TestMethod]
+        public void CanIMakeAnInstanceOfNameGenerator()
         {
-            StudentList = new List<Student>() {
-            new Student {FirstName = "David", LastName = "Beckham", Major = "Fashion" },
-            new Student {FirstName = "Ryan", LastName = "Giggs", Major = "Design" },
-            new Student {FirstName = "Roberto", LastName = "Carlos", Major = "Physical Education" }
-                 }; //Fake
-            repo = new StudentRepository(myContext.Object);
-            fortest = new NameGenerator(myContext.Object);
-   
+            NameGenerator mygenerator = new NameGenerator();
+
+            Assert.IsNotNull(mygenerator);
+        }
+
+        [TestMethod]
+        public void CanIMakeUniqueStudents()
+        {
+            
+            var student1 = fortest.GenerateRandomStudent();
+            var student2 = fortest.GenerateRandomStudent();
+
+            Assert.AreNotEqual(student1, student2);
         }
 
         
