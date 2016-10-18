@@ -1,0 +1,71 @@
+namespace RepoQuiz.Migrations
+{
+    using Models;
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
+    using RepoQuiz.DAL;
+    using System.Collections.Generic;
+
+    internal sealed class Configuration : DbMigrationsConfiguration<RepoQuiz.DAL.StudentContext>
+    {
+        NameGenerator randomizer = new NameGenerator();
+        public Configuration()
+        {
+            AutomaticMigrationsEnabled = false;
+        }
+
+        protected override void Seed(RepoQuiz.DAL.StudentContext context)
+        {
+            //  This method will be called after migrating to the latest version.
+
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  to avoid creating duplicate seed data. E.g.
+            //
+            //    context.People.AddOrUpdate(
+            //      p => p.FullName,
+            //      new Person { FullName = "Andrew Peters" },
+            //      new Person { FullName = "Brice Lambson" },
+            //      new Person { FullName = "Rowan Miller" }
+            //    );
+            //
+
+
+            Student student1 = randomizer.GenerateRandomStudent();
+
+            Student student2 = randomizer.GenerateRandomStudent();
+
+            Student student3 = randomizer.GenerateRandomStudent();
+
+            Student student4 = randomizer.GenerateRandomStudent();
+
+            Student student5 = randomizer.GenerateRandomStudent();
+
+            Student student6 = randomizer.GenerateRandomStudent();
+
+            Student student7 = randomizer.GenerateRandomStudent();
+
+            Student student8 = randomizer.GenerateRandomStudent();
+
+            Student student9 = randomizer.GenerateRandomStudent();
+
+            Student student10 = randomizer.GenerateRandomStudent();
+
+
+            context.Students.AddOrUpdate(
+                    students => students.FirstName,
+                    student1,
+                    student2,
+                    student3,
+                    student4,
+                    student5,
+                    student6,
+                    student7,
+                    student8,
+                    student9,
+                    student10
+                );
+        }
+    }
+}
