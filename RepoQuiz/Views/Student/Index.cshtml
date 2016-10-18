@@ -1,0 +1,36 @@
+﻿
+@{
+    Layout = null;
+}
+
+@if (ViewBag.Students.Count == 0)
+{
+    <h2>No Authors Found!</h2>
+}
+else
+{
+    <h2 align="center">These Are The Students</h2>
+
+
+    <table style="width:50%" align="center">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Major</th>
+        </tr>
+       
+            @foreach (var student in ViewBag.Students)
+            {
+                <tr>
+                    <td align="center">@student.FirstName</td>
+                    <td align="center">@student.LastName</td>
+                    <td align="center">@student.Major</td>
+                </tr>
+            }
+            
+
+    </table>
+
+
+   
+}

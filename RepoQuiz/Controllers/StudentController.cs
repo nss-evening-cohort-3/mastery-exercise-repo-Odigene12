@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RepoQuiz.DAL;
+using RepoQuiz.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +10,13 @@ namespace RepoQuiz.Controllers
 {
     public class StudentController : Controller
     {
+        private StudentRepository repo = new StudentRepository();
+        NameGenerator randomizer = new NameGenerator();
         // GET: Student
         public ActionResult Index()
         {
+            List<Student> mystudents = repo.GetStudents();
+            ViewBag.Students = mystudents;
             return View();
         }
 
